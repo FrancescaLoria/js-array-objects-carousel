@@ -33,9 +33,11 @@ const gamesArray = [
 ];
 console.log("gamesArray", gamesArray);
 
+let currentIndex = 0;
 // mi aggancio al mio elemento dell'html
 const thumbnailsElement = document.querySelector(".thumbnails");
-// ciclo il mio array con un foreach ( metodo degli array)
+
+//ciclo il mio array con un foreach(metodo degli array)
 gamesArray.forEach((game) => {
 	console.log("game", game);
 	// devo concatenare (+=) l'immagine corrente alle precedenti
@@ -43,3 +45,13 @@ gamesArray.forEach((game) => {
 <img src="${game.url}" alt="" />
 </div>`;
 });
+
+const bottomArrow = document.querySelector(".bottom-arrow");
+
+const changeImg = () => {
+	currentIndex++;
+	console.log(gamesArray[currentIndex].url);
+	document.getElementById("main-img").src = gamesArray[currentIndex].url;
+};
+
+bottomArrow.addEventListener("click", changeImg);
