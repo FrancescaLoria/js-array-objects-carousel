@@ -47,11 +47,27 @@ gamesArray.forEach((game) => {
 });
 
 const bottomArrow = document.querySelector(".bottom-arrow");
+const topArrow = document.querySelector(".arrow-up");
+const titleElem = document.querySelector(".title");
+const paragrElem = document.querySelector(".description");
 
-const changeImg = () => {
-	currentIndex++;
-	console.log(gamesArray[currentIndex].url);
-	document.getElementById("main-img").src = gamesArray[currentIndex].url;
+const changeImgDown = () => {
+	if (currentIndex < gamesArray.length - 1) {
+		currentIndex++;
+		document.getElementById("main-img").src = gamesArray[currentIndex].url;
+		titleElem.innerHTML = gamesArray[currentIndex].titolo;
+		paragrElem.innerHTML = gamesArray[currentIndex].descrizione;
+	}
 };
 
-bottomArrow.addEventListener("click", changeImg);
+const changeImgUp = () => {
+	if (currentIndex > 0) {
+		currentIndex--;
+		document.getElementById("main-img").src = gamesArray[currentIndex].url;
+		titleElem.innerHTML = gamesArray[currentIndex].titolo;
+		paragrElem.innerHTML = gamesArray[currentIndex].descrizione;
+	}
+};
+
+bottomArrow.addEventListener("click", changeImgDown);
+topArrow.addEventListener("click", changeImgUp);
